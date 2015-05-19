@@ -1,6 +1,9 @@
 package dds.concorsi.gazzetta;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 
 import org.jsoup.Jsoup;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -77,16 +80,18 @@ public class ScheduledTasks
         TO STAY ALIVE
      */
 
-    /*@Scheduled(initialDelay = 1200000 ,fixedRate = 1200000) //after 20 minutes to startup and every 20 minutes.
+    @Scheduled(initialDelay = 180000 ,fixedRate = 1200000) //after 3 minutes to startup and every 20 minutes.
     public void stayAlive()
     {
-        System.out.println("Stay alive!");
         try {
-            Document doc3 = Jsoup.connect("https://fierce-retreat-4259.herokuapp.com/").get();
+        System.out.println("Stay alive!");
+        URL wwww = new URL("https://fierce-retreat-4259.herokuapp.com/gazzette");
+        BufferedReader br = new BufferedReader(new InputStreamReader(wwww.openStream()));
+        br.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
     @Scheduled(initialDelay=70000, fixedRate= 3600000) //after 70 secs to startup and every hour.
     public void reportCurrentTime() {
