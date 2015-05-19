@@ -45,7 +45,7 @@ public class ScheduledTasks
         {
             if(GazzettaWrapper.getInstance().getGazzette().get(j).isValid())
             {
-                //cb.concorsiToWrapper(GazzettaWrapper.getInstance().getGazzette().get(j));
+                cb.concorsiToWrapper(GazzettaWrapper.getInstance().getGazzette().get(j));
             }
             //gazzetta is not valid
             else

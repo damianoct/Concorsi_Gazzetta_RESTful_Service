@@ -41,9 +41,10 @@ public class ScraperHtml implements Scraper
 
             String dateOfPublication = e.text().split("\\s+")[3].split("-")[0]  //day
                                         + e.text().split("\\s+")[3].split("-")[1] //month
-                                        + e.text().split("\\s+")[3].split("-")[2]; //year
+                                        + e.text().split("\\s+")[3].split("-")[2] //year
+                                        .replaceAll("\\D+", ""); //remove all non-digit chars.
 
-            String numberOfPublication = e.text().split("\\s+")[1]; // number of publication
+            String numberOfPublication = e.text().split("\\s+")[1].replaceAll("\\s+",""); // number of publication
 
 
             addGazzettaToList(numberOfPublication,dateOfPublication);
@@ -251,7 +252,7 @@ public class ScraperHtml implements Scraper
                 + gazzettaItem.getPublicationYear() + "-" //year
                 + gazzettaItem.getPublicationMonth() + "-" //month
                 + gazzettaItem.getPublicationDay()       //day
-                + "&numeroGazzetta=" + gazzettaItem.getNumberOfPublication(); //numberOfPublication
+                + "&numeroGazzetta=" + gazzettaItem.getNumberOfPublication().replaceAll("\\D+",""); //numberOfPublication
 
     }
 
