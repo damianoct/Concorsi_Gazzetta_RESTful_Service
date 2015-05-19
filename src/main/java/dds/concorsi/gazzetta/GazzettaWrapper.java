@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -51,14 +53,45 @@ public class GazzettaWrapper
     {
         if(gazzette.isEmpty())
             return true;
+        // prendo l'anno dalla data
+        try
+        {
+            Calendar c = Calendar.getInstance();
+            c.setTime(formatter.parse(data));
+            int year = c.get(Calendar.YEAR);
+            return (getNewestGazzettaForYear(year).getPublishDate()
+                            .compareTo(formatter.parse(data)) < 0) ? true : false;
+        }
+        catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+
+        return false;
+
+        /*
+        if(gazzette.isEmpty())
+            return true;
         try {
             return (gazzette.get(0).getPublishDate().compareTo(formatter.parse(data)) < 0) ? true : false;
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        return false;
+        return false;*/
 
+    }
+
+    private GazzettaItem getNewestGazzettaForYear(int year)
+    {
+        List<GazzettaItem> gazzetteForYear = new LinkedList<GazzettaItem>();
+
+        for(GazzettaItem g: gazzette)
+            if(g.getPublicationYear() == year)
+                gazzetteForYear.add(g);
+
+        Collections.sort(gazzetteForYear,comparator);
+        return gazzetteForYear.get(0);
     }
 
     public GazzettaItem getGazzettaByDate(String date)

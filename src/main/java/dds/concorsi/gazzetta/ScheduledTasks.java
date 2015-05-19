@@ -132,7 +132,6 @@ public class ScheduledTasks
             //gazzetta is not valid
             else
             {
-                System.out.println("\nTrovata Gazzetta non valida ---> " + GazzettaWrapper.getInstance().getGazzette().get(j).getPublishDate());
                 GazzettaWrapper.getInstance().getGazzette().remove(j);
 
             }
