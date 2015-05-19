@@ -252,7 +252,7 @@ public class ScraperHtml implements Scraper
                 + gazzettaItem.getPublicationYear() + "-" //year
                 + gazzettaItem.getPublicationMonth() + "-" //month
                 + gazzettaItem.getPublicationDay()       //day
-                + "&numeroGazzetta=" + gazzettaItem.getNumberOfPublication().replaceAll("\\D+",""); //numberOfPublication
+                + "&numeroGazzetta=" + gazzettaItem.getNumberOfPublication(); //numberOfPublication
 
     }
 

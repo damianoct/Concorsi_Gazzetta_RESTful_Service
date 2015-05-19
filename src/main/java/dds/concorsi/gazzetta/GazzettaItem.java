@@ -31,7 +31,7 @@ public class GazzettaItem
     public GazzettaItem(long idGazzetta, String numberOfPublication, String dateOfPublication)
     {
         this.concorsi = new LinkedList<ConcorsoItem>();
-        this.numberOfPublication = numberOfPublication;
+        this.numberOfPublication = numberOfPublication.replaceAll("\\D+","");
         this.idGazzetta = idGazzetta;
         try
         {
