@@ -65,4 +65,6 @@ public class GreetingController
         return GazzettaWrapper.getInstance();
 
     }
+
+
 }
