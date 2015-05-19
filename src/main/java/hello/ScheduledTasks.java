@@ -14,21 +14,32 @@ public class ScheduledTasks
     private ScheduledTasks()
     {
 
-        GazzettaBrain gb = new GazzettaBrain();
-        ConcorsoBrain cb = new ConcorsoBrain();
+        GazzettaBrain gb = new GazzettaBrain(new ScraperHtml());
+        ConcorsoBrain cb = new ConcorsoBrain(new ScraperHtml());
 
-        //carico gazzetta nella lista di GazzettaWrapper
+        //carico gazzette nella lista di GazzettaWrapper
         gb.gazzetteToWrapper();
 
-        //per ogni entry (gazzetta) del wrapper carico i concorsi
+        int numeroConcorsi = 0;
+
+        for(int j = 0; j < GazzettaWrapper.getInstance().getGazzette().size(); j++)
+        {
+            if(GazzettaWrapper.getInstance().getGazzette().get(j).isValid())
+            {
+                cb.concorsiToWrapper(GazzettaWrapper.getInstance().getGazzette().get(j));
+            }
+            //if((j % 1) == 0)
+            System.out.println("\n[-] Completed: "+ (100 * j) / GazzettaWrapper.getInstance().getGazzette().size() + "%\n");
+        }
 
         for(GazzettaItem g: GazzettaWrapper.getInstance().getGazzette())
         {
-            if(g.isValid())
-                cb.concorsiToWrapper(g);
+            numeroConcorsi += g.getConcorsi().size();
         }
 
-        System.out.println("-> Finished.\n-> Numero concorsi aggiunti: "+ConcorsoWrapper.getInstance().getConcorsi().size());
+        System.out.println("-> Finished.\n" +
+                            "-> Numero Gazzette: "+ GazzettaWrapper.getInstance().getGazzette().size() +"\n" +
+                            "-> Numero concorsi aggiunti: "+numeroConcorsi);
 
     }
 

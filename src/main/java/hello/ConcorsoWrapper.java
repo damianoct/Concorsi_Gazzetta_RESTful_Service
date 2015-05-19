@@ -1,5 +1,7 @@
 package hello;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,4 +36,5 @@ public class ConcorsoWrapper
     {
         return concorsi;
     }
+
 }

@@ -18,73 +18,31 @@ public class ConcorsoBrain
 {
 
     private final AtomicLong counter = new AtomicLong();
+    private Scraper myScraper;
 
-    public void concorsiToWrapper(GazzettaItem gazzettaItem)
-    {
-        ConcorsoWrapper.getInstance().addConcorsiList(createConcorsiFromGazzetta(gazzettaItem));
+    public ConcorsoBrain(Scraper myScraper) {
+        this.myScraper = myScraper;
     }
 
-    private List createConcorsiFromGazzetta(GazzettaItem gazzettaItem) {
+    public void concorsiToWrapper(GazzettaItem gazzettaItem) {
+        //gazzettaItem.setConcorsi(createConcorsiFromGazzetta(gazzettaItem));
+        //gazzettaItem.setConcorsi(myScraper.createConcorsiFromGazzetta(gazzettaItem));
+        //ConcorsoWrapper.getInstance().addConcorsiList(gazzettaItem.getConcorsi());
 
-        List<ConcorsoItem> concorsi = new LinkedList<ConcorsoItem>();
-        Document concorsiDocument = null;
-        String rubrica = null;
+        long startTime = System.nanoTime();
+        myScraper.createConcorsiFromGazzetta(gazzettaItem);
+        long endTime = System.nanoTime();
 
-        try
-        {
-            concorsiDocument = Jsoup.connect(buildUrlForGazzetta(gazzettaItem)).get();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        long duration = (endTime - startTime) / 1000000;
 
-        for (Element emett: concorsiDocument.getElementsByClass("emettitore"))
-        {
-            if(emett.previousElementSibling().hasClass("rubrica"))
-            {
-                rubrica = emett.previousElementSibling().text();
-            }
+        System.out.println("\nAggiunta concorsi per gazzetta finito.\n\t" +
+                                    "Tempo impiegato: " + duration + "ms.");
 
-            //entro dentro il concorso
-
-            Element e1 = emett.nextElementSibling(); //sono dentro la classe "risultato"
-
-            concorsi.add(new ConcorsoItem(counter.incrementAndGet(), gazzettaItem.getIdGazzetta(), rubrica,
-                                            emett.text(),
-                                            e1.getElementsByTag("a").get(0).text(),
-                                            e1.getElementsByTag("a").get(1).text()));
-
-
-
-            Element tmp = e1;
-
-            while(tmp.nextElementSibling() != null && tmp.nextElementSibling().hasClass("risultato"))
-            {
-                //aggiungo un altro concorso
-                tmp = tmp.nextElementSibling();
-                concorsi.add(new ConcorsoItem(counter.incrementAndGet(), gazzettaItem.getIdGazzetta(), rubrica,
-                                emett.text(),
-                                tmp.getElementsByTag("a").get(0).text(),
-                                tmp.getElementsByTag("a").get(1).text()));
-
-            }
-
-        }
-
-        return concorsi;
 
     }
 
-    private String buildUrlForGazzetta(GazzettaItem gazzettaItem)
-    {
-        return "http://www.gazzettaufficiale.it/gazzetta/concorsi/caricaDettaglio/home?dataPubblicazioneGazzetta="
-                + gazzettaItem.getDateOfPublication().split("/")[2] + "-"
-                + gazzettaItem.getDateOfPublication().split("/")[1] + "-"
-                + gazzettaItem.getDateOfPublication().split("/")[0]
-                + "&numeroGazzetta=" + gazzettaItem.getNumberOfPublication();
+    public void setMyScraper(Scraper myScraper) {
+        this.myScraper = myScraper;
     }
-
-
 
 }
