@@ -1,16 +1,18 @@
 package dds.concorsi.gazzetta;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.IOException;
 
+import org.jsoup.Jsoup;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.jsoup.nodes.Document;
+
+
 
 @Component
 public class ScheduledTasks
 {
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
     private ScheduledTasks()
     {
@@ -69,6 +71,20 @@ public class ScheduledTasks
 
 */
 
+    }
+
+    /*
+        TO STAY ALIVE
+     */
+
+    @Scheduled(fixedRate = 10000)
+    public void stayAlive()
+    {
+        try {
+            Document doc3 = Jsoup.connect("https://fierce-retreat-4259.herokuapp.com/gazzette").get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Scheduled(initialDelay=70000, fixedRate= 3600000)
