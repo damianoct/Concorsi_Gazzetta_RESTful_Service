@@ -77,7 +77,7 @@ public class ScheduledTasks
         TO STAY ALIVE
      */
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(initialDelay = 20000 ,fixedRate = 20000)
     public void stayAlive()
     {
         try {
@@ -120,7 +120,8 @@ public class ScheduledTasks
         {
             if(GazzettaWrapper.getInstance().getGazzette().get(j).isValid())
             {
-                cb.concorsiToWrapper(GazzettaWrapper.getInstance().getGazzette().get(j));
+                if(GazzettaWrapper.getInstance().getGazzette().get(j).getConcorsi().isEmpty())
+                    cb.concorsiToWrapper(GazzettaWrapper.getInstance().getGazzette().get(j));
             }
             //gazzetta is not valid
             else
