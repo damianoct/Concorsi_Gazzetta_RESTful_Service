@@ -20,15 +20,40 @@ public class ScheduledTasks
         //carico gazzette nella lista di GazzettaWrapper
         gb.gazzetteToWrapper();
 
+
+        // pulizia gazzette
+        for(int j = 0; j < GazzettaWrapper.getInstance().getGazzette().size(); j++)
+        {
+            if (!GazzettaWrapper.getInstance().getGazzette().get(j).isValid())
+            {
+                GazzettaWrapper.getInstance().getGazzette().remove(j);
+            }
+        }
+
+
+        System.out.println("Elenco Gazzette Presenti:\n");
+
+
+        for(GazzettaItem g: GazzettaWrapper.getInstance().getGazzette())
+        {
+            System.out.println("\n\t"+ g.getPublishDate());
+        }
+
         int numeroConcorsi = 0;
 
         for(int j = 0; j < GazzettaWrapper.getInstance().getGazzette().size(); j++)
         {
             if(GazzettaWrapper.getInstance().getGazzette().get(j).isValid())
             {
-                cb.concorsiToWrapper(GazzettaWrapper.getInstance().getGazzette().get(j));
+                //cb.concorsiToWrapper(GazzettaWrapper.getInstance().getGazzette().get(j));
             }
-            //if((j % 1) == 0)
+            //gazzetta is not valid
+            else
+            {
+                System.out.println("\nTrovata Gazzetta non valida ---> " + GazzettaWrapper.getInstance().getGazzette().get(j).getPublishDate());
+                GazzettaWrapper.getInstance().getGazzette().remove(j);
+
+            }
             System.out.println("\n[-] Completed: "+ (100 * j) / GazzettaWrapper.getInstance().getGazzette().size() + "%\n");
         }
 
@@ -40,6 +65,8 @@ public class ScheduledTasks
         System.out.println("-> Finished.\n" +
                             "-> Numero Gazzette: "+ GazzettaWrapper.getInstance().getGazzette().size() +"\n" +
                             "-> Numero concorsi aggiunti: "+numeroConcorsi);
+
+
 
     }
 

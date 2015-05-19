@@ -26,7 +26,7 @@ public class ConcorsoBrain
 
         long duration = (endTime - startTime) / 1000000;
 
-        System.out.println("\nAggiunta concorsi per gazzetta finito.\n\t" +
+        System.out.println("\nAggiunta concorsi per gazzetta "+ gazzettaItem.getPublishDate() + " finito.\n\t" +
                                     "Tempo impiegato: " + duration + "ms.");
 
 

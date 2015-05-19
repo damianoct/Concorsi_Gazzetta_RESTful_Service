@@ -80,6 +80,7 @@ public class GazzettaItem
         return null;
     }
 
+
     @JsonIgnore
     public boolean isValid()
     {

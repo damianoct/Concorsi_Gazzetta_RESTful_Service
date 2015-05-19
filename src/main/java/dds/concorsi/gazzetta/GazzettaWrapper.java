@@ -21,14 +21,20 @@ public class GazzettaWrapper
 {
     @JsonView(View.Summary.class)
     private List<GazzettaItem> gazzette;
+
     private static GazzettaWrapper instance;
+
     @JsonIgnore
     private DateFormat formatter;
+
+    @JsonIgnore
+    private GazzetteComparator comparator;
 
     private GazzettaWrapper()
     {
         this.gazzette = new LinkedList<GazzettaItem>();
         this.formatter = new SimpleDateFormat("ddMMyyyy");
+        this.comparator = new GazzetteComparator();
     }
 
     public static GazzettaWrapper getInstance()
@@ -38,6 +44,21 @@ public class GazzettaWrapper
             instance = new GazzettaWrapper();
         }
         return instance;
+    }
+
+    @JsonIgnore
+    public boolean gazzettaIsNewer(String data)
+    {
+        if(gazzette.isEmpty())
+            return true;
+        try {
+            return (gazzette.get(0).getPublishDate().compareTo(formatter.parse(data)) < 0) ? true : false;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+
     }
 
     public GazzettaItem getGazzettaByDate(String date)
@@ -61,30 +82,15 @@ public class GazzettaWrapper
     }
 
     @JsonIgnore
-    public boolean gazzettaExistsForDate(String day, String month, String year)
-    {
-
-
-
-        for(GazzettaItem g: gazzette)
-        {
-            System.out.println("\nIngresso:\t"+day+month+year);
-            System.out.println("\nIn Storage: \t"+ g.getPublishDate());
-            try {
-                if (g.getPublishDate().equals(formatter.parse(day + month + year)))
-                    return true;
-            } catch (ParseException e) {
-                return false;
-            }
-        }
-
-        return false;
-    }
-
-    @JsonIgnore
     public DateFormat getFormatter()
     {
         return formatter;
+    }
+
+    @JsonIgnore
+    public GazzetteComparator getComparator()
+    {
+        return comparator;
     }
 
 }

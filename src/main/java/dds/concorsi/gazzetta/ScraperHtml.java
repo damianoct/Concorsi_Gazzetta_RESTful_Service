@@ -6,6 +6,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -26,7 +28,7 @@ public class ScraperHtml implements Scraper
         Document gazzettaDocument = null;
         try
         {
-            gazzettaDocument = Jsoup.connect("http://www.concorsi.it/gazzetta_ufficiale_concorsi_anno/" + year).get();
+            gazzettaDocument = Jsoup.connect("http://www.gazzettaufficiale.it/ricercaArchivioCompleto/concorsi/" + year).get();
 
         }
         catch (IOException e)
@@ -34,64 +36,28 @@ public class ScraperHtml implements Scraper
             e.printStackTrace();
         }
 
-        for (Element e : gazzettaDocument.select("a[href^=/gazzetta_ufficiale_concorsi_numero/]"))
+        for (Element e : gazzettaDocument.getElementsByClass("elenco_gazzette"))
         {
-            String gazzetta = e.text();
-            String[] splited = gazzetta.split("\\s+");
-            String numero_gazzetta = null;
-            String giorno_gazzetta = null;
-            String mese_gazzetta = null;
 
-            for (int i = (splited.length - 1); i >= 4; i--)
-            {
-                if(splited[i] != null)
-                {
-                    switch (i) {
-                        case 6: {
-                            giorno_gazzetta = splited[i];
-                            giorno_gazzetta.replaceAll("\\s+", "");
-                            break;
-                        }
-                        case 4: {
-                            numero_gazzetta = splited[i];
-                            numero_gazzetta.replaceAll("\\s+", "");
-                            break;
-                        }
-                        case 7: {
-                            mese_gazzetta = splited[i];
-                            mese_gazzetta.replaceAll("\\s+", "");
-                            break;
-                        }
-                        default:
-                            break;
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
+            String dateOfPublication = e.text().split("\\s+")[3].split("-")[0]  //day
+                                        + e.text().split("\\s+")[3].split("-")[1] //month
+                                        + e.text().split("\\s+")[3].split("-")[2]; //year
 
-            if(GazzettaWrapper.getInstance().getGazzette().size() < 2
-                    && !GazzettaWrapper.getInstance()
-                                        .gazzettaExistsForDate(giorno_gazzetta, returnNumberForMonth(mese_gazzetta), year))
-            {
-                GazzettaWrapper.getInstance().getGazzette()
-                        .add(new GazzettaItem(counter.incrementAndGet(), numero_gazzetta,
-                                giorno_gazzetta
-                                        + returnNumberForMonth(mese_gazzetta)
-                                        + year));
-            }
+            String numberOfPublication = e.text().split("\\s+")[1]; // number of publication
+
+
+            addGazzettaToList(numberOfPublication,dateOfPublication);
 
 
         }
 
         //check size of list after the adding phase
-        if(GazzettaWrapper.getInstance().getGazzette().size() < 2)
+        if(GazzettaWrapper.getInstance().getGazzette().size() < Application.NUMBERS_OF_GAZZETTE_MAX)
         {
             String previousYear = String.valueOf(Integer.parseInt(year) - 1);
             createGazzetteFromDocument(previousYear);
         }
+
 
     }
 
@@ -134,6 +100,57 @@ public class ScraperHtml implements Scraper
             }
 
         }
+    }
+
+    private void addGazzettaToList(String numberOfPublication, String dateOfPublication)
+    {
+        //ho un nuova gazzetta da aggiungere
+
+        //se una gazzetta per questa data esiste già ritorno.
+        if (GazzettaWrapper.getInstance().getGazzettaByDate(dateOfPublication) != null)
+            return;
+
+        //vedo se la lista è piena
+
+        if(GazzettaWrapper.getInstance().getGazzette().size() == Application.NUMBERS_OF_GAZZETTE_MAX)
+        {
+            //la lista è piena, quindi prima di aggiungere devo controllare che sia una gazzetta
+            //nuova rispetto alle precedenti
+
+            if(GazzettaWrapper.getInstance().gazzettaIsNewer(dateOfPublication))
+            {
+                //rimuovo l'ultima gazzetta (la più vecchia) e aggiungo
+                GazzettaWrapper.getInstance().getGazzette()
+                            .remove(GazzettaWrapper.getInstance().getGazzette().size() - 1);
+
+                GazzettaWrapper.getInstance().getGazzette()
+                            .add(new GazzettaItem(counter.incrementAndGet(),
+                                    numberOfPublication,
+                                    dateOfPublication));
+
+                Collections.sort(GazzettaWrapper.getInstance().getGazzette(),
+                        GazzettaWrapper.getInstance().getComparator());
+            }
+
+            else
+            {
+                return;
+            }
+
+        }
+
+        else //la lista non è piena, posso aggiungere tranquillamente
+        {
+            GazzettaWrapper.getInstance().getGazzette()
+                    .add(new GazzettaItem(counter.incrementAndGet(),
+                            numberOfPublication,
+                            dateOfPublication));
+
+            Collections.sort(GazzettaWrapper.getInstance().getGazzette(),
+                    GazzettaWrapper.getInstance().getComparator());
+        }
+
+
     }
 
     private void addConcorsoToGazzettaWithRubricaAndEmettitoreFromElement(GazzettaItem gazzettaItem, String rubrica, String emettitore, Element e)

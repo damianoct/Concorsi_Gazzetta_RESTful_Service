@@ -10,6 +10,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class Application
 {
 
+    public static final int NUMBERS_OF_GAZZETTE_MAX = 5;
+
     public static void main(String[] args)
     {
         SpringApplication.run(Application.class, args);
