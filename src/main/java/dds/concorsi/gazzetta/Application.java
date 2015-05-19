@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class Application
 {
 
-    public static final int NUMBERS_OF_GAZZETTE_MAX = 10;
+    public static final int NUMBERS_OF_GAZZETTE_MAX = 2;
 
     public static void main(String[] args)
     {

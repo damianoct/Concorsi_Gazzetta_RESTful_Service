@@ -77,7 +77,7 @@ public class ScheduledTasks
         TO STAY ALIVE
      */
 
-    @Scheduled(initialDelay = 300000 ,fixedRate = 200000)
+    /*@Scheduled(initialDelay = 1200000 ,fixedRate = 1200000) //after 20 minutes to startup and every 20 minutes.
     public void stayAlive()
     {
         System.out.println("Stay alive!");
@@ -86,9 +86,9 @@ public class ScheduledTasks
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
-    @Scheduled(initialDelay=70000, fixedRate= 3600000)
+    @Scheduled(initialDelay=70000, fixedRate= 3600000) //after 70 secs to startup and every hour.
     public void reportCurrentTime() {
         GazzettaBrain gb = new GazzettaBrain(new ScraperHtml());
         ConcorsoBrain cb = new ConcorsoBrain(new ScraperHtml());
