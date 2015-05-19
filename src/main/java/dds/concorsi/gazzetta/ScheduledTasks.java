@@ -1,4 +1,4 @@
-package hello;
+package dds.concorsi.gazzetta;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

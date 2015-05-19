@@ -1,4 +1,4 @@
-package hello;
+package dds.concorsi.gazzetta;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

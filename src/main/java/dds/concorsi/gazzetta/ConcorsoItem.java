@@ -1,4 +1,4 @@
-package hello;
+package dds.concorsi.gazzetta;
 
 import java.util.Arrays;
 import java.util.List;

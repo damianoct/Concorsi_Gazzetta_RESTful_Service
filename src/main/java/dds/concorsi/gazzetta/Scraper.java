@@ -1,6 +1,4 @@
-package hello;
-
-import java.util.List;
+package dds.concorsi.gazzetta;
 
 /**
  * Created by damianodistefano on 18/05/15.

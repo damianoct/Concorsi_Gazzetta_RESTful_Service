@@ -1,4 +1,4 @@
-package hello;
+package dds.concorsi.gazzetta;
 
 public class Greeting
 {

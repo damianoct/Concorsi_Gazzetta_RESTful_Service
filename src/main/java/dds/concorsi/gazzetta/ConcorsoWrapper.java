@@ -1,6 +1,4 @@
-package hello;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package dds.concorsi.gazzetta;
 
 import java.util.LinkedList;
 import java.util.List;

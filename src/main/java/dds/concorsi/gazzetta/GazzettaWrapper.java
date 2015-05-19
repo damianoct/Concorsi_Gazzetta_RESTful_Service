@@ -1,4 +1,4 @@
-package hello;
+package dds.concorsi.gazzetta;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
