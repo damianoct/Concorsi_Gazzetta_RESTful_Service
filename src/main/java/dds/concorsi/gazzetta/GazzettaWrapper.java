@@ -12,6 +12,11 @@ import java.util.List;
 /**
  * Created by damianodistefano on 17/05/15.
  */
+
+/**
+ * Support for LIFO queues
+ */
+
 public class GazzettaWrapper
 {
     @JsonView(View.Summary.class)
