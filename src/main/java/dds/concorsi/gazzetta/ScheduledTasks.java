@@ -77,12 +77,12 @@ public class ScheduledTasks
         TO STAY ALIVE
      */
 
-    @Scheduled(initialDelay = 200000 ,fixedRate = 200000)
+    @Scheduled(initialDelay = 300000 ,fixedRate = 200000)
     public void stayAlive()
     {
         System.out.println("Stay alive!");
         try {
-            Document doc3 = Jsoup.connect("https://fierce-retreat-4259.herokuapp.com/gazzette").get();
+            Document doc3 = Jsoup.connect("https://fierce-retreat-4259.herokuapp.com/").get();
         } catch (IOException e) {
             e.printStackTrace();
         }
