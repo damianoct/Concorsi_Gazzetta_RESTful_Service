@@ -1,5 +1,7 @@
 package dds.concorsi.gazzetta;
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.RuntimeMXBean;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -16,6 +18,29 @@ public class GreetingController
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
+
+    @RequestMapping("/uptime")
+    public String getUptime()
+    {
+        long secondsToPrint, minutesToPrint, hoursToPrint;
+
+        long uptimeInMillis = ManagementFactory.getRuntimeMXBean().getUptime();
+        long seconds = uptimeInMillis / 1000;
+        long minutes = seconds / 60;
+        long hours = minutes / 60;
+        long days = hours / 24;
+
+        
+
+        secondsToPrint = seconds;
+        minutesToPrint = minutes;
+        hoursToPrint = hours;
+
+
+
+
+        return "Day: " + days + " Hour: " + hoursToPrint + " Minutes: " + minutesToPrint + " Seconds: " + secondsToPrint;
+    }
 
     @RequestMapping("/concorsi")
     public List concorsi(@RequestParam(value = "name", defaultValue = "World") String name)

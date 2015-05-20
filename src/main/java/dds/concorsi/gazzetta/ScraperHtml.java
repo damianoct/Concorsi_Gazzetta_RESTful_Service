@@ -65,8 +65,10 @@ public class ScraperHtml implements Scraper
     @Override
     public void createConcorsiFromGazzetta(GazzettaItem gazzettaItem)
     {
+
+
         Document concorsiDocument = null;
-        String rubrica = null;
+        String areaDiInteresse = null;
 
         try
         {
@@ -79,28 +81,30 @@ public class ScraperHtml implements Scraper
 
         for (Element emett: concorsiDocument.getElementsByClass("emettitore"))
         {
-            if(emett.previousElementSibling().hasClass("rubrica"))
+
+            if(emett.previousElementSibling().hasClass("areaDiInteresse"))
             {
-                rubrica = emett.previousElementSibling().text();
+                areaDiInteresse = emett.previousElementSibling().text();
             }
 
 
             Element e1 = emett.nextElementSibling(); //sono dentro la classe "risultato"
 
+            addConcorsoToGazzettaWithRubricaAndEmettitoreFromElement(gazzettaItem,areaDiInteresse,emett.text(),e1);
 
-            addConcorsoToGazzettaWithRubricaAndEmettitoreFromElement(gazzettaItem,rubrica,emett.text(),e1);
-
-            Element tmp = e1;
+             Element tmp = e1;
 
             while(tmp.nextElementSibling() != null && tmp.nextElementSibling().hasClass("risultato"))
             {
                 //add another contest
                 tmp = tmp.nextElementSibling();
-                addConcorsoToGazzettaWithRubricaAndEmettitoreFromElement(gazzettaItem,rubrica,emett.text(),tmp);
+
+                addConcorsoToGazzettaWithRubricaAndEmettitoreFromElement(gazzettaItem,areaDiInteresse,emett.text(),tmp);
 
             }
 
         }
+
     }
 
     private void addGazzettaToList(String numberOfPublication, String dateOfPublication)
@@ -144,8 +148,8 @@ public class ScraperHtml implements Scraper
         {
             GazzettaWrapper.getInstance().getGazzette()
                     .add(new GazzettaItem(counter.incrementAndGet(),
-                            numberOfPublication,
-                            dateOfPublication));
+                                            numberOfPublication,
+                                            dateOfPublication));
 
             Collections.sort(GazzettaWrapper.getInstance().getGazzette(),
                     GazzettaWrapper.getInstance().getComparator());
@@ -154,12 +158,13 @@ public class ScraperHtml implements Scraper
 
     }
 
-    private void addConcorsoToGazzettaWithRubricaAndEmettitoreFromElement(GazzettaItem gazzettaItem, String rubrica, String emettitore, Element e)
+    private void addConcorsoToGazzettaWithRubricaAndEmettitoreFromElement(GazzettaItem gazzettaItem, String areaDiInteresse, String emettitore, Element e)
     {
         Document bandoDocument = null;
 
-        try
-        {
+        long startTime = System.nanoTime();
+
+        try {
 
             bandoDocument = Jsoup.connect("http://www.gazzettaufficiale.it/atto/stampa/concorsi/originario")
                     .data("annoVigenza", String.valueOf(gazzettaItem.getPublicationYear()))
@@ -171,7 +176,10 @@ public class ScraperHtml implements Scraper
                             + gazzettaItem.getPublicationMonth()
                             + "-"
                             + gazzettaItem.getPublicationDay())
-                    .data("codiceRedazionale", getContestTitleAndContestReferenceCode(e.getElementsByTag("a").get(1).text())[1]).get();
+                    .data("codiceRedazionale", getContestTitleAndContestReferenceCode(e.getElementsByTag("a").get(1).text())[1])
+                    .timeout(40 * 1000)
+                    .get();
+
         }
         catch (IOException ex)
         {
@@ -183,11 +191,12 @@ public class ScraperHtml implements Scraper
 
         for(int j = 1; j < articoli.size(); j++)
 
-            articoliBando.add(articoli.get(j).text());
+           articoliBando.add(articoli.get(j).text());
 
-        gazzettaItem.getConcorsi().add(new ConcorsoItem(counter.incrementAndGet(), gazzettaItem.getIdGazzetta(), rubrica,
+
+        gazzettaItem.getConcorsi().add(new ConcorsoItem(counter.incrementAndGet(), gazzettaItem.getIdGazzetta(), areaDiInteresse,
                 emettitore,
-                e.getElementsByTag("a").get(0).text(), //rubrica
+                e.getElementsByTag("a").get(0).text(), //areaDiInteresse
                 getContestTitleAndContestReferenceCode(e.getElementsByTag("a").get(1).text())[0], //contestTitle
                 getContestTitleAndContestReferenceCode(e.getElementsByTag("a").get(1).text())[1], //referenceCode
                 articoliBando));

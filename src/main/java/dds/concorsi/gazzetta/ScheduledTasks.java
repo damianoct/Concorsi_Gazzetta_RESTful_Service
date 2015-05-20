@@ -121,8 +121,8 @@ public class ScheduledTasks
         }
     }
 
-    @Scheduled(initialDelay=80000, fixedRate= 43200000) //after 70 secs to startup and every 12 hour.
-    //@Scheduled(fixedRate= 43200000)
+    //@Scheduled(initialDelay=80000, fixedRate= 43200000) //after 80 secs to startup and every 12 hour.
+    @Scheduled(fixedRate= 43200000)
     public void reportCurrentTime() {
         GazzettaBrain gb = new GazzettaBrain(new ScraperHtml());
         ConcorsoBrain cb = new ConcorsoBrain(new ScraperHtml());
