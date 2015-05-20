@@ -5,6 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+import com.google.api.client.http.HttpResponse;
+import com.google.api.client.json.Json;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -81,19 +89,40 @@ public class ScheduledTasks
      */
 
     @Scheduled(initialDelay = 2400000 ,fixedRate = 2000000) //after 40 minutes to startup and every 30 minutes.
+    //@Scheduled(initialDelay = 5000 ,fixedRate = 5000)
     public void stayAlive()
     {
-        try {
-        System.out.println("Stay alive!");
-        URL wwww = new URL("https://fierce-retreat-4259.herokuapp.com/gazzette");
-        BufferedReader br = new BufferedReader(new InputStreamReader(wwww.openStream()));
-        br.close();
+        try
+        {
+            System.out.println("Stay alive!");
+
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+
+            HttpGet request = new HttpGet("https://fierce-retreat-4259.herokuapp.com/gazzette");
+            request.addHeader("content-type","application/json");
+            CloseableHttpResponse result = httpClient.execute(request);
+            String json = EntityUtils.toString(result.getEntity(), "UTF-8");
+            System.out.println(json);
+            httpClient.close();
+
+
+
+            /*URL wwww = new URL("https://fierce-retreat-4259.herokuapp.com/gazzette");
+            BufferedReader br = new BufferedReader(new InputStreamReader(wwww.openStream()));
+            while(br.readLine() != null)
+            {
+                System.out.println(br.readLine());
+            }
+
+            br.close();*/
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @Scheduled(initialDelay=80000, fixedRate= 43200000) //after 70 secs to startup and every 12 hour.
+    //@Scheduled(fixedRate= 43200000)
     public void reportCurrentTime() {
         GazzettaBrain gb = new GazzettaBrain(new ScraperHtml());
         ConcorsoBrain cb = new ConcorsoBrain(new ScraperHtml());
