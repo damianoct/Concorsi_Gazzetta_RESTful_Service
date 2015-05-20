@@ -19,6 +19,10 @@ import org.springframework.stereotype.Component;
 import org.jsoup.nodes.Document;
 
 
+/**
+ * First try multithread support.
+ */
+
 
 @Component
 public class ScheduledTasks
