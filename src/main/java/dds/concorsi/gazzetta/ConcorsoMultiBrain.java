@@ -5,12 +5,12 @@ import java.util.List;
 /**
  * Created by damianodistefano on 20/05/15.
  */
-public class ConcorsiMultiBrain implements Runnable
+public class ConcorsoMultiBrain implements Runnable
 {
 
     private List<GazzettaItem> gazzetteToWork;
 
-    public ConcorsiMultiBrain(List<GazzettaItem> gazzetteToWork, Scraper myScraper)
+    public ConcorsoMultiBrain(List<GazzettaItem> gazzetteToWork, Scraper myScraper)
     {
         this.gazzetteToWork = gazzetteToWork;
         this.myScraper = myScraper;

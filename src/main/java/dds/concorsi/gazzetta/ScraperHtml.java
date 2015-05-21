@@ -6,7 +6,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -66,6 +65,8 @@ public class ScraperHtml implements Scraper
     public void createConcorsiFromGazzetta(GazzettaItem gazzettaItem)
     {
 
+        if(!gazzettaItem.getConcorsi().isEmpty()) //already full
+            return;
 
         Document concorsiDocument = null;
         String areaDiInteresse = null;
@@ -82,7 +83,7 @@ public class ScraperHtml implements Scraper
         for (Element emett: concorsiDocument.getElementsByClass("emettitore"))
         {
 
-            if(emett.previousElementSibling().hasClass("areaDiInteresse"))
+            if(emett.previousElementSibling().hasClass("rubrica"))
             {
                 areaDiInteresse = emett.previousElementSibling().text();
             }

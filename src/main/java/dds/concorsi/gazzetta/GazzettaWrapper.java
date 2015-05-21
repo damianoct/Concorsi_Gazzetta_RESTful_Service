@@ -53,14 +53,15 @@ public class GazzettaWrapper
     {
         if(gazzette.isEmpty())
             return true;
-        // prendo l'anno dalla data
+
         try
         {
             Calendar c = Calendar.getInstance();
             c.setTime(formatter.parse(data));
             int year = c.get(Calendar.YEAR);
+
             return (getNewestGazzettaForYear(year).getPublishDate()
-                            .compareTo(formatter.parse(data)) < 0) ? true : false;
+                                                    .compareTo(formatter.parse(data)) < 0) ? true : false;
         }
         catch (ParseException e)
         {

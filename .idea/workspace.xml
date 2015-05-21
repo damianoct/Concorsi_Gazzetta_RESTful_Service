@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9423dbbb-1cb1-404b-992a-fb22e01118b6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/Application.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/Application.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ConcorsoBrain.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ConcorsoBrain.class" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsiMultiBrain.java" afterPath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoMultiBrain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/GazzettaWrapper.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/GazzettaWrapper.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ScheduledTasks.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ScheduledTasks.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ScraperHtml.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ScraperHtml.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaWrapper.java" afterPath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaWrapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java" afterPath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScraperHtml.java" afterPath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScraperHtml.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -33,25 +35,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2750#2751#0" expanded="false" />
-                <element signature="e#2781#2782#0" expanded="false" />
-                <element signature="e#2841#2842#0" expanded="false" />
-                <element signature="e#2873#2874#0" expanded="false" />
-                <element signature="e#2942#2943#0" expanded="false" />
-                <element signature="e#2975#2976#0" expanded="false" />
-              </folding>
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScraperHtml.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScraperHtml.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScraperHtml.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82403433">
-              <caret line="128" column="16" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="16" />
+            <state vertical-scroll-proportion="100.59259">
+              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,27 +58,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#1209#1210#0" expanded="false" />
-                <element signature="e#1242#1243#0" expanded="false" />
-                <element signature="e#1281#1282#0" expanded="false" />
-                <element signature="e#1314#1315#0" expanded="false" />
-                <element signature="e#1355#1356#0" expanded="false" />
-                <element signature="e#1388#1389#0" expanded="false" />
-                <element signature="e#1434#1435#0" expanded="false" />
-                <element signature="e#1472#1473#0" expanded="false" />
-                <element signature="e#1517#1518#0" expanded="false" />
-                <element signature="e#1554#1555#0" expanded="false" />
-                <element signature="e#1594#1595#0" expanded="false" />
-                <element signature="e#1626#1627#0" expanded="false" />
-                <element signature="e#1674#1675#0" expanded="false" />
-                <element signature="e#1714#1715#0" expanded="false" />
-                <element signature="e#1756#1757#0" expanded="false" />
-                <element signature="e#1793#1794#0" expanded="false" />
-                <element signature="e#1843#1844#0" expanded="false" />
-                <element signature="e#1879#1880#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,22 +73,44 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="GreetingController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GreetingController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="54" column="45" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ScheduledTasks.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="121" column="190" selection-start-line="121" selection-start-column="190" selection-end-line="121" selection-end-column="190" />
+              <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#596#597#0" expanded="true" />
+                <element signature="e#658#659#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConcorsiMultiBrain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsiMultiBrain.java">
+      <file leaf-file-name="GazzettaBrain.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaBrain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConcorsoMultiBrain.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoMultiBrain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5895954">
               <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
               <folding />
             </state>
@@ -125,7 +121,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/Scraper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -135,7 +131,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoBrain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="0" selection-start-line="10" selection-start-column="4" selection-end-line="35" selection-end-column="5" />
+              <caret line="28" column="0" selection-start-line="10" selection-start-column="4" selection-end-line="34" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -170,13 +166,15 @@
         <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaItem.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GreetingController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaWrapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaBrain.java" />
         <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoBrain.java" />
         <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsiMultiBrain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaWrapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/Scraper.java" />
         <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScraperHtml.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoMultiBrain.java" />
       </list>
     </option>
   </component>
@@ -192,8 +190,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1920" />
-    <option name="height" value="985" />
+    <option name="width" value="1440" />
+    <option name="height" value="817" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -300,9 +298,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -548,7 +546,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="985" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="817" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -566,8 +564,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17864583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20633188" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27083334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26871657" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -603,19 +601,47 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="121" column="5" selection-start-line="121" selection-start-column="5" selection-end-line="121" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#596#597#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/Scraper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoBrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="0" selection-start-line="10" selection-start-column="4" selection-end-line="35" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2750#2751#0" expanded="false" />
-            <element signature="e#2781#2782#0" expanded="false" />
-            <element signature="e#2841#2842#0" expanded="false" />
-            <element signature="e#2873#2874#0" expanded="false" />
-            <element signature="e#2942#2943#0" expanded="false" />
-            <element signature="e#2975#2976#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -633,27 +659,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1209#1210#0" expanded="false" />
-            <element signature="e#1242#1243#0" expanded="false" />
-            <element signature="e#1281#1282#0" expanded="false" />
-            <element signature="e#1314#1315#0" expanded="false" />
-            <element signature="e#1355#1356#0" expanded="false" />
-            <element signature="e#1388#1389#0" expanded="false" />
-            <element signature="e#1434#1435#0" expanded="false" />
-            <element signature="e#1472#1473#0" expanded="false" />
-            <element signature="e#1517#1518#0" expanded="false" />
-            <element signature="e#1554#1555#0" expanded="false" />
-            <element signature="e#1594#1595#0" expanded="false" />
-            <element signature="e#1626#1627#0" expanded="false" />
-            <element signature="e#1674#1675#0" expanded="false" />
-            <element signature="e#1714#1715#0" expanded="false" />
-            <element signature="e#1756#1757#0" expanded="false" />
-            <element signature="e#1793#1794#0" expanded="false" />
-            <element signature="e#1843#1844#0" expanded="false" />
-            <element signature="e#1879#1880#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -671,6 +677,8 @@
           <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#596#597#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -687,15 +695,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2750#2751#0" expanded="false" />
-            <element signature="e#2781#2782#0" expanded="false" />
-            <element signature="e#2841#2842#0" expanded="false" />
-            <element signature="e#2873#2874#0" expanded="false" />
-            <element signature="e#2942#2943#0" expanded="false" />
-            <element signature="e#2975#2976#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -713,27 +713,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1209#1210#0" expanded="false" />
-            <element signature="e#1242#1243#0" expanded="false" />
-            <element signature="e#1281#1282#0" expanded="false" />
-            <element signature="e#1314#1315#0" expanded="false" />
-            <element signature="e#1355#1356#0" expanded="false" />
-            <element signature="e#1388#1389#0" expanded="false" />
-            <element signature="e#1434#1435#0" expanded="false" />
-            <element signature="e#1472#1473#0" expanded="false" />
-            <element signature="e#1517#1518#0" expanded="false" />
-            <element signature="e#1554#1555#0" expanded="false" />
-            <element signature="e#1594#1595#0" expanded="false" />
-            <element signature="e#1626#1627#0" expanded="false" />
-            <element signature="e#1674#1675#0" expanded="false" />
-            <element signature="e#1714#1715#0" expanded="false" />
-            <element signature="e#1756#1757#0" expanded="false" />
-            <element signature="e#1793#1794#0" expanded="false" />
-            <element signature="e#1843#1844#0" expanded="false" />
-            <element signature="e#1879#1880#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -751,6 +731,8 @@
           <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#596#597#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -767,15 +749,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2750#2751#0" expanded="false" />
-            <element signature="e#2781#2782#0" expanded="false" />
-            <element signature="e#2841#2842#0" expanded="false" />
-            <element signature="e#2873#2874#0" expanded="false" />
-            <element signature="e#2942#2943#0" expanded="false" />
-            <element signature="e#2975#2976#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -817,6 +791,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#596#597#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -840,15 +816,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2750#2751#0" expanded="false" />
-            <element signature="e#2781#2782#0" expanded="false" />
-            <element signature="e#2841#2842#0" expanded="false" />
-            <element signature="e#2873#2874#0" expanded="false" />
-            <element signature="e#2942#2943#0" expanded="false" />
-            <element signature="e#2975#2976#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -890,6 +858,8 @@
           <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#596#597#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -906,15 +876,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2750#2751#0" expanded="false" />
-            <element signature="e#2781#2782#0" expanded="false" />
-            <element signature="e#2841#2842#0" expanded="false" />
-            <element signature="e#2873#2874#0" expanded="false" />
-            <element signature="e#2942#2943#0" expanded="false" />
-            <element signature="e#2975#2976#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -949,6 +911,8 @@
           <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#596#597#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -965,15 +929,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2750#2751#0" expanded="false" />
-            <element signature="e#2781#2782#0" expanded="false" />
-            <element signature="e#2841#2842#0" expanded="false" />
-            <element signature="e#2873#2874#0" expanded="false" />
-            <element signature="e#2942#2943#0" expanded="false" />
-            <element signature="e#2975#2976#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -999,61 +955,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GreetingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.431694">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaBrain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2750#2751#0" expanded="false" />
-            <element signature="e#2781#2782#0" expanded="false" />
-            <element signature="e#2841#2842#0" expanded="false" />
-            <element signature="e#2873#2874#0" expanded="false" />
-            <element signature="e#2942#2943#0" expanded="false" />
-            <element signature="e#2975#2976#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1209#1210#0" expanded="false" />
-            <element signature="e#1242#1243#0" expanded="false" />
-            <element signature="e#1281#1282#0" expanded="false" />
-            <element signature="e#1314#1315#0" expanded="false" />
-            <element signature="e#1355#1356#0" expanded="false" />
-            <element signature="e#1388#1389#0" expanded="false" />
-            <element signature="e#1434#1435#0" expanded="false" />
-            <element signature="e#1472#1473#0" expanded="false" />
-            <element signature="e#1517#1518#0" expanded="false" />
-            <element signature="e#1554#1555#0" expanded="false" />
-            <element signature="e#1594#1595#0" expanded="false" />
-            <element signature="e#1626#1627#0" expanded="false" />
-            <element signature="e#1674#1675#0" expanded="false" />
-            <element signature="e#1714#1715#0" expanded="false" />
-            <element signature="e#1756#1757#0" expanded="false" />
-            <element signature="e#1793#1794#0" expanded="false" />
-            <element signature="e#1843#1844#0" expanded="false" />
-            <element signature="e#1879#1880#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1068,7 +974,23 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoBrain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="0" selection-start-line="10" selection-start-column="4" selection-end-line="35" selection-end-column="5" />
+          <caret line="28" column="0" selection-start-line="10" selection-start-column="4" selection-end-line="34" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaBrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1076,15 +998,15 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/Scraper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsiMultiBrain.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GreetingController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
+          <caret line="54" column="45" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -1092,20 +1014,30 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="121" column="190" selection-start-line="121" selection-start-column="190" selection-end-line="121" selection-end-column="190" />
+          <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#596#597#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScraperHtml.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82403433">
-          <caret line="128" column="16" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="16" />
+        <state vertical-scroll-proportion="100.59259">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoMultiBrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5895954">
+          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
