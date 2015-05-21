@@ -8,7 +8,6 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ConcorsoBrain
 {
 
-    private final AtomicLong counter = new AtomicLong();
     private Scraper myScraper;
 
     public ConcorsoBrain(Scraper myScraper) {

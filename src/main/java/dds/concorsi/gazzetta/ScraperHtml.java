@@ -107,7 +107,7 @@ public class ScraperHtml implements Scraper
 
     }
 
-    private void addGazzettaToList(String numberOfPublication, String dateOfPublication)
+    private synchronized void addGazzettaToList(String numberOfPublication, String dateOfPublication)
     {
         //ho un nuova gazzetta da aggiungere
 
