@@ -70,9 +70,7 @@ public class ScheduledTasks
                                                                         .start();
         new Thread(new ConcorsoMultiBrain(GazzettaWrapper.getInstance()
                                                             .getGazzette()
-                                                                .subList(44, GazzettaWrapper
-                                                                        .getInstance()
-                                                                        .getGazzette().size()),
+                                                                .subList(44, GazzettaWrapper.getInstance().getGazzette().size()),
                                                                                 new ScraperHtml()), "Thread 4")
                                                                                     .start();
 
