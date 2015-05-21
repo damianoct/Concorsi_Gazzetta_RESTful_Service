@@ -122,16 +122,15 @@ public class ScraperHtml implements Scraper
             //la lista è piena, quindi prima di aggiungere devo controllare che sia una gazzetta
             //nuova rispetto alle precedenti
 
-            if(GazzettaWrapper.getInstance().gazzettaIsNewer(dateOfPublication))
-            {
+            if(GazzettaWrapper.getInstance().gazzettaIsNewer(dateOfPublication)) {
                 //rimuovo l'ultima gazzetta (la più vecchia) e aggiungo
                 GazzettaWrapper.getInstance().getGazzette()
-                            .remove(GazzettaWrapper.getInstance().getGazzette().size() - 1);
-
+                        .remove(GazzettaWrapper.getInstance().getGazzette().size() - 1);
+                
                 GazzettaWrapper.getInstance().getGazzette()
-                            .add(new GazzettaItem(counter.incrementAndGet(),
-                                    numberOfPublication,
-                                    dateOfPublication));
+                        .add(new GazzettaItem(counter.incrementAndGet(),
+                                numberOfPublication,
+                                dateOfPublication));
 
                 Collections.sort(GazzettaWrapper.getInstance().getGazzette(),
                         GazzettaWrapper.getInstance().getComparator());
