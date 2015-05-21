@@ -82,7 +82,7 @@ public class ScraperHtml implements Scraper
         for (Element emett: concorsiDocument.getElementsByClass("emettitore"))
         {
 
-            if(emett.previousElementSibling().hasClass("areaDiInteresse"))
+            if(emett.previousElementSibling().hasClass("rubrica"))
             {
                 areaDiInteresse = emett.previousElementSibling().text();
             }
