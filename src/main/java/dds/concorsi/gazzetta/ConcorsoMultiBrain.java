@@ -1,36 +1,21 @@
 package dds.concorsi.gazzetta;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * Created by damianodistefano on 20/05/15.
  */
-public class ConcorsoMultiBrain implements Runnable
+public class ConcorsoMultiBrain implements Callable<String>
 {
 
     private List<GazzettaItem> gazzetteToWork;
 
-    public ConcorsoMultiBrain(List<GazzettaItem> gazzetteToWork, Scraper myScraper)
+    public ConcorsoMultiBrain(Scraper myScraper, GazzettaItem ...gazzettaItem)
     {
-        this.gazzetteToWork = gazzetteToWork;
+        this.gazzetteToWork = Arrays.asList(gazzettaItem);
         this.myScraper = myScraper;
-    }
-
-
-    @Override
-    public void run()
-    {
-        for(GazzettaItem g: gazzetteToWork)
-        {
-            long startTime = System.nanoTime();
-            myScraper.createConcorsiFromGazzetta(g);
-            long endTime = System.nanoTime();
-
-            long duration = (endTime - startTime) / 1000000;
-
-            System.out.println("\nAggiunta concorsi per gazzetta "+ g.getPublishDate() + " finito.\n\t" +
-                    "Tempo impiegato: " + duration + "ms.");
-        }
     }
 
 
@@ -41,7 +26,26 @@ public class ConcorsoMultiBrain implements Runnable
     }
 
 
+    @Override
+    public String call() throws Exception
+    {
+        int numComputeContest = 0;
+
+        long startTime = System.nanoTime();
+
+        for(GazzettaItem g: gazzetteToWork)
+        {
+            myScraper.createConcorsiFromGazzetta(g);
+            numComputeContest += g.getConcorsi().size();
+        }
+
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime) / 1000000;
+
+        return ("\t\t" + Thread.currentThread().getName() + " finished.\n"
+                            + "\t\t\tConcorsi aggiunti: "+ numComputeContest + " in " + duration + " ms.");
 
 
 
+    }
 }

@@ -15,10 +15,6 @@ import java.util.List;
  * Created by damianodistefano on 17/05/15.
  */
 
-/**
- * Support for LIFO queues
- */
-
 public class GazzettaWrapper
 {
     @JsonView(View.Summary.class)
@@ -69,18 +65,6 @@ public class GazzettaWrapper
         }
 
         return false;
-
-        /*
-        if(gazzette.isEmpty())
-            return true;
-        try {
-            return (gazzette.get(0).getPublishDate().compareTo(formatter.parse(data)) < 0) ? true : false;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return false;*/
-
     }
 
     private GazzettaItem getNewestGazzettaForYear(int year)

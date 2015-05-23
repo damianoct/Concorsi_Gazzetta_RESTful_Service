@@ -1,6 +1,9 @@
 package dds.concorsi.gazzetta;
 
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.concurrent.*;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -12,89 +15,78 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 
-/**
- * First try multithread support.
- */
-
-
 @Component
-public class ScheduledTasks
+public class ScheduledTasks implements Observer
 {
-
-    GazzettaBrain gb;
-
-    // to stay alive
+    ExecutorService executor;
+    GazzettaBrain gBrain;
 
     private ScheduledTasks()
     {
-        this.gb = new GazzettaBrain(new ScraperHtml());
+        this.executor = Executors.newCachedThreadPool();
+        this.gBrain = new GazzettaBrain(new ScraperHtml(this));
     }
 
     @Scheduled(initialDelay=80000, fixedRate= 43200000) //after 80 secs to startup and every 12 hour.
-    public void scheduledWork() {
-
-        long startTime = System.nanoTime();
-
-        getData();
-
-        long endTime = System.nanoTime();
-
-        long duration = (endTime - startTime) / 1000000;
-
-        System.out.println("\nAggiunta concorsi per 60 gazzette finito.\n\t" +
-                "Tempo impiegato: " + duration + "ms.");
-
+    public void scheduledWork()
+    {
+        executor.submit(gBrain);
     }
 
-    public void getData()
+
+    @Scheduled(initialDelay = 2400000 ,fixedRate = 2000000) //after 40 minutes to startup and every 30 minutes.
+    public void stayAlive()
     {
-        gb.gazzetteToWrapper();
-        cleanGazzette();
-
-        int numeroConcorsi = 0;
-
-
-        new Thread(new ConcorsoMultiBrain(GazzettaWrapper.getInstance()
-                                                            .getGazzette()
-                                                                .subList(0, 14),
-                                                                    new ScraperHtml()), "Thread 1")
-                                                                        .start();
-        new Thread(new ConcorsoMultiBrain(GazzettaWrapper.getInstance()
-                                                            .getGazzette()
-                                                                .subList(15, 29),
-                                                                    new ScraperHtml()), "Thread 2").start();
-        new Thread(new ConcorsoMultiBrain(GazzettaWrapper.getInstance()
-                                                            .getGazzette()
-                                                                .subList(29, 44),
-                                                                    new ScraperHtml()), "Thread 3")
-                                                                        .start();
-        new Thread(new ConcorsoMultiBrain(GazzettaWrapper.getInstance()
-                                                            .getGazzette()
-                                                                .subList(44, GazzettaWrapper.getInstance().getGazzette().size()),
-                                                                                new ScraperHtml()), "Thread 4")
-                                                                                    .start();
-
-
-        for(GazzettaItem g: GazzettaWrapper.getInstance().getGazzette())
+        try
         {
-            numeroConcorsi += g.getConcorsi().size();
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+
+            HttpGet request = new HttpGet("https://fierce-retreat-4259.herokuapp.com/gazzette");
+            request.addHeader("content-type","application/json");
+            CloseableHttpResponse result = httpClient.execute(request);
+            String json = EntityUtils.toString(result.getEntity(), "UTF-8");
+            httpClient.close();
+
         }
-
-        System.out.println("-> Finished.\n" +
-                "-> Numero Gazzette: " + GazzettaWrapper.getInstance().getGazzette().size() + "\n" +
-                "-> Numero concorsi aggiunti: " + numeroConcorsi);
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 
-    public void cleanGazzette()
+    @Override
+    public void update(Observable o, Object arg)
     {
-        for(int j = 0; j < GazzettaWrapper.getInstance().getGazzette().size(); j++)
+        long numberOfGazzetteAdded = (long) arg;
+        if(numberOfGazzetteAdded == 1)
         {
-            if (!GazzettaWrapper.getInstance().getGazzette().get(j).isValid())
+            System.out.println("Lanciato thread -> gazzetta singola del: " +
+                                    GazzettaWrapper.getInstance().getGazzette()
+                                        .get(0).getDateOfPublication());
+
+            executor.submit(new ConcorsoMultiBrain(new ScraperHtml(),
+                    GazzettaWrapper.getInstance().getGazzette()
+                            .get(0)));
+        }
+        else if(numberOfGazzetteAdded == 0)
+        {
+            System.out.println("\n\n\tOut of date.\n\n\n");
+        }
+        else // first load
+        {
+            int tmp = 0;
+            for(int j = 1; j <= GazzettaWrapper.getInstance().getGazzette().size(); j++)
             {
-                GazzettaWrapper.getInstance().getGazzette().remove(j);
+                if((j % 15) == 0)
+                {
+                    System.out.println("Lanciato thread -> subList Gazzette: ("+ tmp + "," + j + ").");
+                    executor.submit(new ConcorsoMultiBrain(new ScraperHtml(),
+                            GazzettaWrapper.getInstance().getGazzette()
+                                    .subList(tmp, j).toArray(new GazzettaItem[0])));
+                    tmp = j;
+                }
             }
         }
     }
-
 }

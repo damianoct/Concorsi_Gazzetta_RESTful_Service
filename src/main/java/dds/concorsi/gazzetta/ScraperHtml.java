@@ -6,19 +6,25 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by damianodistefano on 18/05/15.
  */
-public class ScraperHtml implements Scraper
+public class ScraperHtml extends Observable implements Scraper
 {
-
+    private Observer observer;
     private final AtomicLong counter = new AtomicLong();
+    private final AtomicLong addGazzetteCounter = new AtomicLong();
 
+
+    public ScraperHtml() {}
+
+    public ScraperHtml(Observer o)
+    {
+        addObserver(o);
+    }
 
     @Override
     public void createGazzetteFromDocument(String year)
@@ -46,18 +52,22 @@ public class ScraperHtml implements Scraper
             String numberOfPublication = e.text().split("\\s+")[1].replaceAll("\\s+",""); // number of publication
 
 
-            addGazzettaToList(numberOfPublication,dateOfPublication);
-
-
+            addGazzettaToList(numberOfPublication, dateOfPublication);
         }
 
         //check size of list after the adding phase
+
         if(GazzettaWrapper.getInstance().getGazzette().size() < Application.NUMBERS_OF_GAZZETTE_MAX)
         {
             String previousYear = String.valueOf(Integer.parseInt(year) - 1);
             createGazzetteFromDocument(previousYear);
         }
-
+        else // finish
+        {
+            setChanged();
+            notifyObservers(addGazzetteCounter.getAndSet(0));
+            deleteObserver(observer);
+        }
 
     }
 
@@ -93,7 +103,7 @@ public class ScraperHtml implements Scraper
 
             addConcorsoToGazzettaWithRubricaAndEmettitoreFromElement(gazzettaItem,areaDiInteresse,emett.text(),e1);
 
-             Element tmp = e1;
+            Element tmp = e1;
 
             while(tmp.nextElementSibling() != null && tmp.nextElementSibling().hasClass("risultato"))
             {
@@ -112,10 +122,6 @@ public class ScraperHtml implements Scraper
     {
         //ho un nuova gazzetta da aggiungere
 
-        //se una gazzetta per questa data esiste già ritorno.
-        if (GazzettaWrapper.getInstance().getGazzettaByDate(dateOfPublication) != null)
-            return;
-
         //vedo se la lista è piena
 
         if(GazzettaWrapper.getInstance().getGazzette().size() == Application.NUMBERS_OF_GAZZETTE_MAX)
@@ -123,7 +129,8 @@ public class ScraperHtml implements Scraper
             //la lista è piena, quindi prima di aggiungere devo controllare che sia una gazzetta
             //nuova rispetto alle precedenti
 
-            if(GazzettaWrapper.getInstance().gazzettaIsNewer(dateOfPublication)) {
+            if(GazzettaWrapper.getInstance().gazzettaIsNewer(dateOfPublication))
+            {
                 //rimuovo l'ultima gazzetta (la più vecchia) e aggiungo
                 GazzettaWrapper.getInstance().getGazzette()
                         .remove(GazzettaWrapper.getInstance().getGazzette().size() - 1);
@@ -133,14 +140,15 @@ public class ScraperHtml implements Scraper
                                 numberOfPublication,
                                 dateOfPublication));
 
+                addGazzetteCounter.incrementAndGet();
+
                 Collections.sort(GazzettaWrapper.getInstance().getGazzette(),
                         GazzettaWrapper.getInstance().getComparator());
             }
 
             else
-            {
+
                 return;
-            }
 
         }
 
@@ -148,8 +156,8 @@ public class ScraperHtml implements Scraper
         {
             GazzettaWrapper.getInstance().getGazzette()
                     .add(new GazzettaItem(counter.incrementAndGet(),
-                                            numberOfPublication,
-                                            dateOfPublication));
+                            numberOfPublication,
+                            dateOfPublication));
 
             Collections.sort(GazzettaWrapper.getInstance().getGazzette(),
                     GazzettaWrapper.getInstance().getComparator());

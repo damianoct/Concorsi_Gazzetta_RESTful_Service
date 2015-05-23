@@ -62,13 +62,6 @@ public class GreetingController
                                 .getConcorsoByReferenceCode(referenceCode);
     }
 
-    @RequestMapping("/vola")
-    public ConcorsoWrapper cocnorsi()
-    {
-        return ConcorsoWrapper.getInstance();
-
-    }
-
     @JsonView(View.Summary.class)
     @RequestMapping("/gazzette")
     public GazzettaWrapper gazzette()
