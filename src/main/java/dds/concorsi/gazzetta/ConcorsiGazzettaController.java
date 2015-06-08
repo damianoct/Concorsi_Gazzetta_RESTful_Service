@@ -1,9 +1,7 @@
 package dds.concorsi.gazzetta;
 
 import java.lang.management.ManagementFactory;
-import java.lang.management.RuntimeMXBean;
-import java.util.LinkedList;
-import java.util.List;
+
 import java.util.concurrent.atomic.AtomicLong;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -12,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GreetingController
+public class ConcorsiGazzettaController
 {
 
     private static final String template = "Hello, %s!";
@@ -29,27 +27,12 @@ public class GreetingController
         long minutes = seconds / 60;
         long hours = minutes / 60;
         long days = hours / 24;
-
-        
-
         secondsToPrint = seconds;
         minutesToPrint = minutes;
         hoursToPrint = hours;
-
-
-
-
         return "Day: " + days + " Hour: " + hoursToPrint + " Minutes: " + minutesToPrint + " Seconds: " + secondsToPrint;
     }
 
-    @RequestMapping("/concorsi")
-    public List concorsi(@RequestParam(value = "name", defaultValue = "World") String name)
-    {
-        List greetingObjects = new LinkedList<Greeting>();
-        greetingObjects.add(new Greeting(counter.incrementAndGet(), "Ereoto"));
-        greetingObjects.add(new Greeting(counter.incrementAndGet(), String.format(template, name)));
-        return greetingObjects;
-    }
 
     @RequestMapping("/concorso")
     public ConcorsoItem getConcorso(@RequestParam(value = "giorno") String giorno,
@@ -62,7 +45,7 @@ public class GreetingController
                                 .getConcorsoByReferenceCode(referenceCode);
     }
 
-    @JsonView(View.Summary.class)
+    @JsonView(View.GazzetteSummary.class)
     @RequestMapping("/gazzette")
     public GazzettaWrapper gazzette()
     {
@@ -70,8 +53,8 @@ public class GreetingController
 
     }
 
-    @JsonView(View.Summary1.class)
-    @RequestMapping("/gazzetteWithDate")
+    @JsonView(View.GazzetteWithContests.class)
+    @RequestMapping("/gazzetteWithContests")
     public GazzettaWrapper gazzetteWithDate()
     {
         return GazzettaWrapper.getInstance();

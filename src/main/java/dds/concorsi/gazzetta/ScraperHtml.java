@@ -170,8 +170,6 @@ public class ScraperHtml extends Observable implements Scraper
     {
         Document bandoDocument = null;
 
-        long startTime = System.nanoTime();
-
         try {
 
             bandoDocument = Jsoup.connect("http://www.gazzettaufficiale.it/atto/stampa/concorsi/originario")
@@ -209,43 +207,6 @@ public class ScraperHtml extends Observable implements Scraper
                 getContestTitleAndContestReferenceCode(e.getElementsByTag("a").get(1).text())[1], //referenceCode
                 articoliBando));
 
-    }
-
-    private String returnNumberForMonth(String month)
-    {
-        String[] monthNames = {
-                                "Gennaio",
-                                "Febbraio",
-                                "Marzo",
-                                "Aprile",
-                                "Maggio",
-                                "Giugno",
-                                "Luglio",
-                                "Agosto",
-                                "Settembre",
-                                "Ottobre",
-                                "Novembre",
-                                "Dicembre"
-                                            };
-
-        if(month == null)
-
-            return null;
-
-        else
-        {
-            for (int i = 0; i < monthNames.length; i++)
-            {
-
-                if (month.equalsIgnoreCase(monthNames[i]))
-
-                    return (i < 10) ? "0"+ Integer.toString(i + 1) : Integer.toString(i + 1);
-
-            }
-
-            return null;
-
-        }
     }
 
     private String[] getContestTitleAndContestReferenceCode(String s)

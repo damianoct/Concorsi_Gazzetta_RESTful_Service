@@ -17,7 +17,7 @@ import java.util.List;
 
 public class GazzettaWrapper
 {
-    @JsonView(View.Summary.class)
+    @JsonView(View.GazzetteSummary.class)
     private List<GazzettaItem> gazzette;
 
     private static GazzettaWrapper instance;
