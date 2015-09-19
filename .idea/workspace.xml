@@ -2,27 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9423dbbb-1cb1-404b-992a-fb22e01118b6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoBrain.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/Greeting.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ConcorsoBrain.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ConcorsoWrapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/Greeting.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/GreetingController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/View$Summary.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/View$Summary1.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GreetingController.java" afterPath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsiGazzettaController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ConcorsoItem.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ConcorsoItem.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/GazzettaItem.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/GazzettaItem.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/GazzettaWrapper.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/GazzettaWrapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ScheduledTasks.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ScheduledTasks.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ScraperHtml.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ScraperHtml.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/View$SummaryWithRecipients.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/View$SummaryWithRecipients.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/View.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/View.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoItem.java" afterPath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsoItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaItem.java" afterPath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaWrapper.java" afterPath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScraperHtml.java" afterPath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScraperHtml.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/View.java" afterPath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/View.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gs-rest-service.iws" />
@@ -65,10 +44,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScheduledTasks.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ScheduledTasks.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="0.17910448">
               <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
@@ -120,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GazzettaItem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GazzettaItem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7164179">
-              <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="61" column="51" selection-start-line="61" selection-start-column="51" selection-end-line="61" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -235,6 +214,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -319,7 +299,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -567,7 +546,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432249295730</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update controller">
+      <created>1433766093437</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1433766093437</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -580,7 +565,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -603,7 +588,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37402016" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37349397" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -625,7 +610,8 @@
     <MESSAGE value="fixed bug for insert gazzette 2014" />
     <MESSAGE value="crisp multithread" />
     <MESSAGE value="areaDiInteresse fix&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="areaDiInteresse fix&#10;" />
+    <MESSAGE value="update controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="update controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1002,14 +988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsiGazzettaController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1032,11 +1010,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/GazzettaItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7164179">
-          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="51" selection-start-line="61" selection-start-column="51" selection-end-line="61" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17910448">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
