@@ -5,8 +5,8 @@ package dds.concorsi.gazzetta;
  */
 public class View {
 
-    interface Summary {}
-    interface Summary1 extends Summary {}
-    interface SummaryWithRecipients extends Summary {}
+    interface GazzetteSummary {}
+    interface GazzetteWithContests extends GazzetteSummary {}
+    interface SummaryWithRecipients extends GazzetteSummary {}
 
 }

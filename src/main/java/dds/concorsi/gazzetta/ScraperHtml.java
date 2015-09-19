@@ -6,20 +6,25 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by damianodistefano on 18/05/15.
  */
-public class ScraperHtml implements Scraper
+public class ScraperHtml extends Observable implements Scraper
 {
-
+    private Observer observer;
     private final AtomicLong counter = new AtomicLong();
+    private final AtomicLong addGazzetteCounter = new AtomicLong();
 
+
+    public ScraperHtml() {}
+
+    public ScraperHtml(Observer o)
+    {
+        addObserver(o);
+    }
 
     @Override
     public void createGazzetteFromDocument(String year)
@@ -47,18 +52,22 @@ public class ScraperHtml implements Scraper
             String numberOfPublication = e.text().split("\\s+")[1].replaceAll("\\s+",""); // number of publication
 
 
-            addGazzettaToList(numberOfPublication,dateOfPublication);
-
-
+            addGazzettaToList(numberOfPublication, dateOfPublication);
         }
 
         //check size of list after the adding phase
+
         if(GazzettaWrapper.getInstance().getGazzette().size() < Application.NUMBERS_OF_GAZZETTE_MAX)
         {
             String previousYear = String.valueOf(Integer.parseInt(year) - 1);
             createGazzetteFromDocument(previousYear);
         }
-
+        else // finish
+        {
+            setChanged();
+            notifyObservers(addGazzetteCounter.getAndSet(0));
+            deleteObserver(observer);
+        }
 
     }
 
@@ -66,6 +75,8 @@ public class ScraperHtml implements Scraper
     public void createConcorsiFromGazzetta(GazzettaItem gazzettaItem)
     {
 
+        if(!gazzettaItem.getConcorsi().isEmpty()) //already full
+            return;
 
         Document concorsiDocument = null;
         String areaDiInteresse = null;
@@ -92,7 +103,7 @@ public class ScraperHtml implements Scraper
 
             addConcorsoToGazzettaWithRubricaAndEmettitoreFromElement(gazzettaItem,areaDiInteresse,emett.text(),e1);
 
-             Element tmp = e1;
+            Element tmp = e1;
 
             while(tmp.nextElementSibling() != null && tmp.nextElementSibling().hasClass("risultato"))
             {
@@ -107,13 +118,9 @@ public class ScraperHtml implements Scraper
 
     }
 
-    private void addGazzettaToList(String numberOfPublication, String dateOfPublication)
+    private synchronized void addGazzettaToList(String numberOfPublication, String dateOfPublication)
     {
         //ho un nuova gazzetta da aggiungere
-
-        //se una gazzetta per questa data esiste già ritorno.
-        if (GazzettaWrapper.getInstance().getGazzettaByDate(dateOfPublication) != null)
-            return;
 
         //vedo se la lista è piena
 
@@ -126,21 +133,22 @@ public class ScraperHtml implements Scraper
             {
                 //rimuovo l'ultima gazzetta (la più vecchia) e aggiungo
                 GazzettaWrapper.getInstance().getGazzette()
-                            .remove(GazzettaWrapper.getInstance().getGazzette().size() - 1);
-
+                        .remove(GazzettaWrapper.getInstance().getGazzette().size() - 1);
+                
                 GazzettaWrapper.getInstance().getGazzette()
-                            .add(new GazzettaItem(counter.incrementAndGet(),
-                                    numberOfPublication,
-                                    dateOfPublication));
+                        .add(new GazzettaItem(counter.incrementAndGet(),
+                                numberOfPublication,
+                                dateOfPublication));
+
+                addGazzetteCounter.incrementAndGet();
 
                 Collections.sort(GazzettaWrapper.getInstance().getGazzette(),
                         GazzettaWrapper.getInstance().getComparator());
             }
 
             else
-            {
+
                 return;
-            }
 
         }
 
@@ -148,8 +156,8 @@ public class ScraperHtml implements Scraper
         {
             GazzettaWrapper.getInstance().getGazzette()
                     .add(new GazzettaItem(counter.incrementAndGet(),
-                                            numberOfPublication,
-                                            dateOfPublication));
+                            numberOfPublication,
+                            dateOfPublication));
 
             Collections.sort(GazzettaWrapper.getInstance().getGazzette(),
                     GazzettaWrapper.getInstance().getComparator());
@@ -161,8 +169,6 @@ public class ScraperHtml implements Scraper
     private void addConcorsoToGazzettaWithRubricaAndEmettitoreFromElement(GazzettaItem gazzettaItem, String areaDiInteresse, String emettitore, Element e)
     {
         Document bandoDocument = null;
-
-        long startTime = System.nanoTime();
 
         try {
 
@@ -201,43 +207,6 @@ public class ScraperHtml implements Scraper
                 getContestTitleAndContestReferenceCode(e.getElementsByTag("a").get(1).text())[1], //referenceCode
                 articoliBando));
 
-    }
-
-    private String returnNumberForMonth(String month)
-    {
-        String[] monthNames = {
-                                "Gennaio",
-                                "Febbraio",
-                                "Marzo",
-                                "Aprile",
-                                "Maggio",
-                                "Giugno",
-                                "Luglio",
-                                "Agosto",
-                                "Settembre",
-                                "Ottobre",
-                                "Novembre",
-                                "Dicembre"
-                                            };
-
-        if(month == null)
-
-            return null;
-
-        else
-        {
-            for (int i = 0; i < monthNames.length; i++)
-            {
-
-                if (month.equalsIgnoreCase(monthNames[i]))
-
-                    return (i < 10) ? "0"+ Integer.toString(i + 1) : Integer.toString(i + 1);
-
-            }
-
-            return null;
-
-        }
     }
 
     private String[] getContestTitleAndContestReferenceCode(String s)

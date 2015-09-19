@@ -16,12 +16,13 @@ import java.util.List;
  */
 public class GazzettaItem
 {
-    @JsonView(View.Summary.class)
+    @JsonView(View.GazzetteSummary.class)
     private final long idGazzetta;
-    @JsonView(View.Summary.class)
+    @JsonView(View.GazzetteSummary.class)
     private final String numberOfPublication;
-    @JsonView(View.Summary.class)
+    @JsonView(View.GazzetteSummary.class)
     private Date dateOfPublication = null;
+    @JsonView(View.GazzetteWithContests.class)
     private List<ConcorsoItem> concorsi;
 
     @JsonIgnore

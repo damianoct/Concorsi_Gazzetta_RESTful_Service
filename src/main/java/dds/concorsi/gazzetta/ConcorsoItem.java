@@ -1,6 +1,7 @@
 package dds.concorsi.gazzetta;
 
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import java.util.List;
 
 /**
@@ -11,12 +12,18 @@ public class ConcorsoItem
 
     private final long idConcorso;
     private final long idGazzetta;
+    @JsonView(View.GazzetteWithContests.class)
     private final String emettitore;
+    @JsonView(View.GazzetteWithContests.class)
     private final String areaDiInteresse;
+    @JsonView(View.GazzetteWithContests.class)
     private final String titoloConcorso;
+    @JsonView(View.GazzetteWithContests.class)
     private final String tipologia;
+    @JsonView(View.GazzetteWithContests.class)
     private final String codiceRedazionale;
     private final List<String> articoliBando;
+    @JsonView(View.GazzetteWithContests.class)
     private final int numeroArticoli;
 
 
