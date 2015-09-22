@@ -53,6 +53,14 @@ public class ConcorsiGazzettaController
 
     }
 
+    @JsonView(View.GazzetteSummary.class)
+    @RequestMapping("/latestGazzetta")
+    public GazzettaItem latestGazzetta()
+    {
+        return GazzettaWrapper.getInstance().getGazzette().get(0);
+
+    }
+
     @JsonView(View.GazzetteWithContests.class)
     @RequestMapping("/gazzetteWithContests")
     public GazzettaWrapper gazzetteWithDate()
