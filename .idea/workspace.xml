@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60634ca8-0054-4ef5-a4dd-ed5279bc8a9e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsiGazzettaController.java" afterPath="$PROJECT_DIR$/src/main/java/dds/concorsi/gazzetta/ConcorsiGazzettaController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ConcorsiGazzettaController.class" afterPath="$PROJECT_DIR$/target/classes/dds/concorsi/gazzetta/ConcorsiGazzettaController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gs-rest-service.iws" />
@@ -473,7 +473,13 @@
       <option name="project" value="LOCAL" />
       <updated>1442658396592</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="&quot;latestGazzetta&quot; feature added.">
+      <created>1442934677330</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1442934677330</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -496,7 +502,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26601672" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26601672" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -518,7 +524,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="deploy after merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="deploy after merge" />
+    <MESSAGE value="&quot;latestGazzetta&quot; feature added." />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;latestGazzetta&quot; feature added." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
