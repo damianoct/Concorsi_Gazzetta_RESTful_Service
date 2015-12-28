@@ -44,6 +44,23 @@ public class GazzettaWrapper
         return instance;
     }
 
+    public List<GazzettaItem> getGazzetteNewerThan(String date)
+    {
+
+        List<GazzettaItem> gazzetteList = new LinkedList<>();
+
+        for(GazzettaItem g: gazzette) {
+            try {
+                if (g.getPublishDate().after(formatter.parse(date)))
+                    gazzetteList.add(g);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return gazzetteList;
+    }
+
     @JsonIgnore
     public boolean gazzettaIsNewer(String data)
     {

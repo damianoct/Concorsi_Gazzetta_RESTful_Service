@@ -2,6 +2,7 @@ package dds.concorsi.gazzetta;
 
 import java.lang.management.ManagementFactory;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -50,6 +51,17 @@ public class ConcorsiGazzettaController
     public GazzettaWrapper gazzette()
     {
         return GazzettaWrapper.getInstance();
+
+    }
+
+    @JsonView(View.GazzetteSummary.class)
+    @RequestMapping("/gazzetteNewerThan")
+    public List<GazzettaItem> gazzetteNewerThan(
+                                                @RequestParam(value = "giorno") String giorno,
+                                                @RequestParam(value = "mese") String mese,
+                                                @RequestParam(value = "anno") String anno)
+    {
+        return GazzettaWrapper.getInstance().getGazzetteNewerThan(giorno + mese + anno);
 
     }
 
