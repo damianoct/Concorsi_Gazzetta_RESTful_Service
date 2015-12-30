@@ -35,6 +35,12 @@ public class GazzettaWrapper
         this.comparator = new GazzetteComparator();
     }
 
+    //wrapper instance for the latest gazzette requested.
+    public GazzettaWrapper(List<GazzettaItem> gazzetteNewerThan)
+    {
+        this.gazzette = gazzetteNewerThan;
+    }
+
     public static GazzettaWrapper getInstance()
     {
         if(instance == null)
@@ -107,7 +113,6 @@ public class GazzettaWrapper
                 return null;
             }
         }
-
         return null;
     }
 

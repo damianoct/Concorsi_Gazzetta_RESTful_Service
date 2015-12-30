@@ -56,11 +56,11 @@ public class ConcorsiGazzettaController
 
     @JsonView(View.GazzetteWithContests.class)
     @RequestMapping("/gazzetteNewerThan")
-    public List<GazzettaItem> gazzetteNewerThan(@RequestParam(value = "giorno") String giorno,
+    public GazzettaWrapper gazzetteNewerThan(@RequestParam(value = "giorno") String giorno,
                                                 @RequestParam(value = "mese") String mese,
                                                 @RequestParam(value = "anno") String anno)
     {
-        return GazzettaWrapper.getInstance().getGazzetteNewerThan(giorno + mese + anno);
+        return new GazzettaWrapper(GazzettaWrapper.getInstance().getGazzetteNewerThan(giorno + mese + anno));
 
     }
 
