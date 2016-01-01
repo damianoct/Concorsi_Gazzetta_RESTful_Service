@@ -29,44 +29,47 @@ public class ScraperHtml extends Observable implements Scraper
     @Override
     public void createGazzetteFromDocument(String year)
     {
+        String previousYear = String.valueOf(Integer.parseInt(year) - 1);
 
         Document gazzettaDocument = null;
         try
         {
             gazzettaDocument = Jsoup.connect("http://www.gazzettaufficiale.it/ricercaArchivioCompleto/concorsi/" + year).get();
 
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        for (Element e : gazzettaDocument.getElementsByClass("elenco_gazzette"))
+        if (!gazzettaDocument.location().contains(year))
         {
-
-            String dateOfPublication = e.text().split("\\s+")[3].split("-")[0]  //day
-                                        + e.text().split("\\s+")[3].split("-")[1] //month
-                                        + e.text().split("\\s+")[3].split("-")[2] //year
-                                        .replaceAll("\\D+", ""); //remove all non-digit chars.
-
-            String numberOfPublication = e.text().split("\\s+")[1].replaceAll("\\s+",""); // number of publication
-
-
-            addGazzettaToList(numberOfPublication, dateOfPublication);
-        }
-
-        //check size of list after the adding phase
-
-        if(GazzettaWrapper.getInstance().getGazzette().size() < Application.NUMBERS_OF_GAZZETTE_MAX)
-        {
-            String previousYear = String.valueOf(Integer.parseInt(year) - 1);
             createGazzetteFromDocument(previousYear);
         }
-        else // finish
+        else
         {
-            setChanged();
-            notifyObservers(addGazzetteCounter.getAndSet(0));
-            deleteObserver(observer);
+            for (Element e : gazzettaDocument.getElementsByClass("elenco_gazzette")) {
+
+                String dateOfPublication = e.text().split("\\s+")[3].split("-")[0]  //day
+                        + e.text().split("\\s+")[3].split("-")[1] //month
+                        + e.text().split("\\s+")[3].split("-")[2] //year
+                        .replaceAll("\\D+", ""); //remove all non-digit chars.
+
+                String numberOfPublication = e.text().split("\\s+")[1].replaceAll("\\s+", ""); // number of publication
+
+
+                addGazzettaToList(numberOfPublication, dateOfPublication);
+            }
+
+            //check size of list after the adding phase
+
+            if (GazzettaWrapper.getInstance().getGazzette().size() < Application.NUMBERS_OF_GAZZETTE_MAX) {
+                createGazzetteFromDocument(previousYear);
+            }
+            else // finish
+            {
+                setChanged();
+                notifyObservers(addGazzetteCounter.getAndSet(0));
+                deleteObserver(observer);
+            }
         }
 
     }
@@ -83,7 +86,7 @@ public class ScraperHtml extends Observable implements Scraper
 
         try
         {
-            concorsiDocument = Jsoup.connect(buildUrlForGazzetta(gazzettaItem)).get();
+            concorsiDocument = Jsoup.connect(buildUrlForGazzetta(gazzettaItem)).timeout(40 * 1000).get();
         }
         catch (IOException e)
         {

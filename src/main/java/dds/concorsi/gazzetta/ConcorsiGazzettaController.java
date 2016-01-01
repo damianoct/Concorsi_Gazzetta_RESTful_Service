@@ -2,7 +2,6 @@ package dds.concorsi.gazzetta;
 
 import java.lang.management.ManagementFactory;
 
-import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import com.fasterxml.jackson.annotation.JsonView;
