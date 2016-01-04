@@ -35,10 +35,10 @@ public class GazzettaWrapper
         this.comparator = new GazzetteComparator();
     }
 
-    //wrapper instance for latest gazzette requests.
-    public GazzettaWrapper(List<GazzettaItem> gazzetteNewerThan)
+    //wrapper instance for restrict sets of gazzette requests.
+    public GazzettaWrapper(List<GazzettaItem> gazzetteRequested)
     {
-        this.gazzette = gazzetteNewerThan;
+        this.gazzette = gazzetteRequested;
     }
 
     public static GazzettaWrapper getInstance()
@@ -48,6 +48,23 @@ public class GazzettaWrapper
             instance = new GazzettaWrapper();
         }
         return instance;
+    }
+
+    public List<GazzettaItem> getGazzetta(String date)
+    {
+
+        List<GazzettaItem> gazzetteList = new LinkedList<>();
+
+        for(GazzettaItem g: gazzette) {
+            try {
+                if (g.getPublishDate().compareTo(formatter.parse(date)) == 0)
+                    gazzetteList.add(g);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return gazzetteList;
     }
 
     public List<GazzettaItem> getGazzetteNewerThan(String date)
