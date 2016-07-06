@@ -62,7 +62,7 @@ public class ConcorsiGazzettaController
         return new GazzettaWrapper(GazzettaWrapper.getInstance().getGazzetta(giorno + mese + anno));
 
     }
-    
+
     @JsonView(View.GazzetteWithContests.class)
     @RequestMapping("/gazzetteNewerThan")
     public GazzettaWrapper gazzetteNewerThan(@RequestParam(value = "giorno") String giorno,
