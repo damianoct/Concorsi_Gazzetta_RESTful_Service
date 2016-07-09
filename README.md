@@ -4,6 +4,7 @@ A RESTFul service developed with Spring.io that manages public contests of Gazze
 
 ##Install and run
 
+<img src="https://maven.apache.org/images/maven-logo-black-on-white.png" width="180">
 - ####Maven
 
  ```
@@ -11,7 +12,7 @@ A RESTFul service developed with Spring.io that manages public contests of Gazze
  cd Concorsi_Gazzetta_RESTful_Service
  mvn package
  #run jar
- java -jar /target/gs-rest-service-0.1.0.jar
+ java -jar target/gs-rest-service-0.1.0.jar
  ```
 
 <img src="http://2.bp.blogspot.com/-7mObhiF1oQU/Vesm1knXbkI/AAAAAAAADzo/ka_mfLsOBDw/s1600/docker.png" width="200">
@@ -20,7 +21,7 @@ A RESTFul service developed with Spring.io that manages public contests of Gazze
  You can build and run it on armv7 device with Docker!
  
  ```
- sudo docker run -p 8080:8080 damianodds/armhf-concorsi_restful`
+ sudo docker run -p 8080:8080 damianodds/armhf-concorsi_restful
  ```
 
  Feel free do modify the source and rebuild the docker images. 
@@ -35,13 +36,13 @@ A RESTFul service developed with Spring.io that manages public contests of Gazze
 
 - #####List available Gazzette.
  
-  `$ curl -i -H "Accept: application/json" "yourserver.com:8080/gazzette"`
+  `curl -i -H "Accept: application/json" "yourserver.com:8080/gazzette"`
   
 - #####List available Gazzette with summary constes.
 
-  `$ curl -i -H "Accept: application/json" "yourserver.com:8080/gazzetteWithContests"`
+  `curl -i -H "Accept: application/json" "yourserver.com:8080/gazzetteWithContests"`
 
 - #####List available Gazzette with summary constes.
 
-  `$ curl -i -H "Accept: application/json" "yourserver.com:8080/concorso?giorno=05&mese=07&anno=2016&codiceRedazionale=16E03156" `
+  `curl -i -H "Accept: application/json" "yourserver.com:8080/concorso?giorno=05&mese=07&anno=2016&codiceRedazionale=16E03156" `
 
