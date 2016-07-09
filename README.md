@@ -2,8 +2,6 @@
 
 A RESTFul service developed with Spring.io that manages public contests of Gazzetta Ufficiale.
 
-===
-
 ##Install and run
 
 - ####Maven
@@ -30,10 +28,8 @@ A RESTFul service developed with Spring.io that manages public contests of Gazze
  ```
  mvn package
  sudo docker build -f target/Dockerfile -t "yourrepository/yournameimage" .
- ```
- 
-
-===
+ ````
+---
 
 ##API Overview
 
