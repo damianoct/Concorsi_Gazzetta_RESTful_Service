@@ -18,7 +18,7 @@ A RESTFul service developed with Spring.io that manages public contests of Gazze
 <img src="http://2.bp.blogspot.com/-7mObhiF1oQU/Vesm1knXbkI/AAAAAAAADzo/ka_mfLsOBDw/s1600/docker.png" width="200">
 - ####Docker 
 
- You can build and run it on armv7 device with Docker!
+ You can build and run it on armv7 device (e.g. Raspberry Pi3, AllWinner chips..) with Docker!
  
  ```
  sudo docker run -p 8080:8080 damianodds/armhf-concorsi_restful
