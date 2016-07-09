@@ -42,7 +42,7 @@ A RESTFul service developed with Spring.io that manages public contests of Gazze
 
   `curl -i -H "Accept: application/json" "yourserver.com:8080/gazzetteWithContests"`
 
-- #####List available Gazzette with summary constes.
+- #####Get single contest.
 
   `curl -i -H "Accept: application/json" "yourserver.com:8080/concorso?giorno=05&mese=07&anno=2016&codiceRedazionale=16E03156" `
 
