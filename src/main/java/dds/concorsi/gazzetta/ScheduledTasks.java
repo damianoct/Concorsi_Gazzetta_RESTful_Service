@@ -34,6 +34,8 @@ public class ScheduledTasks implements Observer
     }
 
 
+    //only for Heroku
+    /*
     @Scheduled(initialDelay = 2400000 ,fixedRate = 2000000) //after 40 minutes to startup and every 30 minutes.
     public void stayAlive()
     {
@@ -52,7 +54,8 @@ public class ScheduledTasks implements Observer
         {
             e.printStackTrace();
         }
-    }
+    }	
+    */
 
 
     @Override
