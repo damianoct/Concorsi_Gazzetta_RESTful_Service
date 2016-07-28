@@ -28,7 +28,8 @@ A RESTFul service developed with Spring.io that manages public contests of Gazze
  
  ```
  mvn package
- docker build -f target/Dockerfile -t "yourrepository/yournameimage" .
+ cd target
+ docker build -f Dockerfile -t "yourrepository/yournameimage" .
  ````
 ---
 
@@ -38,7 +39,7 @@ A RESTFul service developed with Spring.io that manages public contests of Gazze
  
   `curl -i -H "Accept: application/json" "yourserver.com:8080/gazzette"`
   
-- #####List available Gazzette with summary constes.
+- #####List available Gazzette with summary constests.
 
   `curl -i -H "Accept: application/json" "yourserver.com:8080/gazzetteWithContests"`
 
