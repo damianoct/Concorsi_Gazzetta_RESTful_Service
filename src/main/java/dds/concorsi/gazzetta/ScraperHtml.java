@@ -162,6 +162,8 @@ public class ScraperHtml extends Observable implements Scraper
                             numberOfPublication,
                             dateOfPublication));
 
+	    addGazzetteCounter.incrementAndGet();
+
             Collections.sort(GazzettaWrapper.getInstance().getGazzette(),
                     GazzettaWrapper.getInstance().getComparator());
         }
