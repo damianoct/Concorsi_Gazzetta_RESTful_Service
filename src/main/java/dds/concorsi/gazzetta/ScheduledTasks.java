@@ -27,7 +27,7 @@ public class ScheduledTasks implements Observer
         this.gBrain = new GazzettaBrain(new ScraperHtml(this));
     }
 
-    @Scheduled(initialDelay=80000, fixedRate= 43200000) //after 80 secs to startup and every 12 hour.
+    @Scheduled(initialDelay=80000, fixedRate=3600000) //after 80 secs to startup and every 1 hour.
     public void scheduledWork()
     {
         executor.submit(gBrain);
