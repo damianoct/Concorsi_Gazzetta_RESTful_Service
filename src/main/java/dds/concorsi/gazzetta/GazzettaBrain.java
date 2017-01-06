@@ -1,7 +1,7 @@
 package dds.concorsi.gazzetta;
 
-import java.util.Calendar;
 import java.util.concurrent.Callable;
+import org.joda.time.DateTime;
 
 /**
  * Created by damianodistefano on 16/05/15.
@@ -25,7 +25,9 @@ public class GazzettaBrain implements Callable<Integer>
     @Override
     public Integer call() throws Exception
     {
-        myScraper.createGazzetteFromDocument(String.valueOf(Calendar.getInstance().get(Calendar.YEAR)));
+        //myScraper.createGazzetteFromDocument(String.valueOf(Calendar.getInstance().get(Calendar.YEAR)));
+        DateTime dt = new DateTime();
+        myScraper.createGazzetteFromDocument(dt.year().getAsText());
         cleanGazzette();
         return GazzettaWrapper.getInstance().getGazzette().size();
 
