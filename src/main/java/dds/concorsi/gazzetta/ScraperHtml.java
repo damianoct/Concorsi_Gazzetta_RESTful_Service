@@ -171,6 +171,47 @@ public class ScraperHtml extends Observable implements Scraper
 
     }
 
+    public static ConcorsoItem downloadContest(String anno, String mese, String giorno, String codiceRedazionale)
+    {
+        Document bandoDocument = null;
+
+        try {
+
+            bandoDocument = Jsoup.connect("http://www.gazzettaufficiale.it/atto/stampa/concorsi/originario")
+                    .data("annoVigenza", anno)
+                    .data("meseVigenza", mese)
+                    .data("giornoVigenza", giorno)
+                    .data("creaHTML", "Visualizza")
+                    .data("dataPubblicazioneGazzetta", anno
+                            + "-"
+                            + mese
+                            + "-"
+                            + giorno)
+                    .data("codiceRedazionale", codiceRedazionale)
+                    .timeout(40 * 1000)
+                    .get();
+
+        }
+        catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
+
+        Elements articoli = bandoDocument.select("pre");
+        List<String> articoliBando = new LinkedList<String>();
+
+        for(int j = 1; j < articoli.size(); j++)
+
+            articoliBando.add(articoli.get(j).text());
+
+        return new ConcorsoItem(0, 0, "CEPPA",
+                "CEPPA",
+                "CEPPA", //areaDiInteresse
+                codiceRedazionale, //contestTitle
+                codiceRedazionale,
+                articoliBando);
+    }
+
     private void addConcorsoToGazzettaWithRubricaAndEmettitoreFromElement(GazzettaItem gazzettaItem, String areaDiInteresse, String emettitore, Element e)
     {
         Document bandoDocument = null;
@@ -214,7 +255,7 @@ public class ScraperHtml extends Observable implements Scraper
 
     }
 
-    private String[] getContestTitleAndContestReferenceCode(String s)
+    private static String[] getContestTitleAndContestReferenceCode(String s)
     {
 
         String contestReferenceCode = s.split("\\s+")[(s.split("\\s+").length) - 3]

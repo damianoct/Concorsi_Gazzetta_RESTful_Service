@@ -40,9 +40,13 @@ public class ConcorsiGazzettaController
                                     @RequestParam(value = "anno") String anno,
                                     @RequestParam(value = "codiceRedazionale") String referenceCode)
     {
-        return GazzettaWrapper.getInstance()
-                                .getGazzettaByDate(giorno+mese+anno)
-                                .getConcorsoByReferenceCode(referenceCode);
+        if (GazzettaWrapper.getInstance().getGazzettaByDate(giorno + mese + anno) != null)
+            return GazzettaWrapper.getInstance()
+                    .getGazzettaByDate(giorno+mese+anno)
+                    .getConcorsoByReferenceCode(referenceCode);
+        else
+            return ScraperHtml.downloadContest(anno, mese, giorno, referenceCode); //TODO funzione che scarica il concorso
+
     }
 
     @JsonView(View.GazzetteSummary.class)
