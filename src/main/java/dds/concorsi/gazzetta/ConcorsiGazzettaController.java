@@ -45,7 +45,7 @@ public class ConcorsiGazzettaController
                     .getGazzettaByDate(giorno+mese+anno)
                     .getConcorsoByReferenceCode(referenceCode);
         else
-            return ScraperHtml.downloadContest(anno, mese, giorno, referenceCode); //TODO funzione che scarica il concorso
+            return ScraperHtml.downloadContest(anno, mese, giorno, referenceCode);
 
     }
 
