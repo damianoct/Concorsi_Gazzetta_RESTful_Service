@@ -1,5 +1,6 @@
 package dds.concorsi.gazzetta;
 
+import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -192,6 +193,11 @@ public class ScraperHtml extends Observable implements Scraper
                     .get();
 
         }
+        catch(HttpStatusException hse)
+        {
+            System.out.println("Status Exception. Response Code: [" + hse.getStatusCode() + "]");
+        }
+
         catch (IOException ex)
         {
             ex.printStackTrace();

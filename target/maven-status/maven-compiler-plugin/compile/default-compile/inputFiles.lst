@@ -1,12 +1,13 @@
-/Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/Application.java
-/Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/GazzettaItem.java
 /Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/GazzettaWrapper.java
 /Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/GazzetteComparator.java
 /Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/ConcorsiGazzettaController.java
+/Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/ConcorsoItem.java
+/Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java
+/Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/Application.java
+/Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/GazzettaItem.java
+/Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/metrics/MonitorConfiguration.java
 /Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/View.java
 /Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/ConcorsoMultiBrain.java
 /Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/Scraper.java
-/Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/ConcorsoItem.java
 /Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/GazzettaBrain.java
-/Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/ScheduledTasks.java
 /Users/damiano/Dev/Concorsi_Gazzetta_RESTful_Service/src/main/java/dds/concorsi/gazzetta/ScraperHtml.java

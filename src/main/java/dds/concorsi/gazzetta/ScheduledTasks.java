@@ -1,15 +1,8 @@
 package dds.concorsi.gazzetta;
 
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.*;
-
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
