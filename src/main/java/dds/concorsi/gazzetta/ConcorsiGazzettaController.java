@@ -4,8 +4,6 @@ import java.lang.management.ManagementFactory;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-import com.codahale.metrics.annotation.ExceptionMetered;
-import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,8 +37,6 @@ public class ConcorsiGazzettaController
 
     @RequestMapping("/concorso")
     @ResponseBody
-    @Timed
-    @ExceptionMetered
     public ConcorsoItem getConcorso(@RequestParam(value = "giorno") String giorno,
                                     @RequestParam(value = "mese") String mese,
                                     @RequestParam(value = "anno") String anno,
@@ -86,8 +82,6 @@ public class ConcorsiGazzettaController
     @JsonView(View.GazzetteSummary.class)
     @RequestMapping("/latestGazzetta")
     @ResponseBody
-    @Timed
-    @ExceptionMetered
     public GazzettaItem latestGazzetta()
     {
         return GazzettaWrapper.getInstance().getGazzette().get(0);
@@ -97,8 +91,6 @@ public class ConcorsiGazzettaController
     @JsonView(View.GazzetteWithContests.class)
     @RequestMapping("/gazzetteWithContests")
     @ResponseBody
-    @Timed
-    @ExceptionMetered
     public GazzettaWrapper gazzetteWithDate()
     {
         return GazzettaWrapper.getInstance();
