@@ -20,8 +20,8 @@ import org.springframework.context.annotation.Configuration;
 import java.net.InetSocketAddress;
 import java.util.concurrent.TimeUnit;
 
-@Configuration
-@EnableMetrics
+//@Configuration
+//@EnableMetrics
 public class MonitorConfiguration extends MetricsConfigurerAdapter
 {
 
