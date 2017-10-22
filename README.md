@@ -1,6 +1,6 @@
 # Concorsi Gazzetta RESTful Service
 
-A RESTFul service developed with Spring.io that manages public contests of Gazzetta Ufficiale.
+A WebScraping service developed with Spring.io that manages public contests of Gazzetta Ufficiale.
 
 ##Install and run
 
@@ -8,7 +8,7 @@ A RESTFul service developed with Spring.io that manages public contests of Gazze
 - ####Maven
 
  ```
- git clone https://github.com/damianoct/Concorsi_Gazzetta_RESTful_Service.git
+ git clone https://github.com/damianoct/Concorsi_Gazzetta_WebScraping_Service.git
  cd Concorsi_Gazzetta_RESTful_Service
  mvn package
  #run jar
